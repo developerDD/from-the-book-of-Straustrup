@@ -29,17 +29,27 @@ double& value(const string& s)
 }
 void main()
 {
-	
+
 	string buff;
 
 	while (cin >> buff&&buff != "1")
 	{
-		value(buff)++;
+	value(buff)++;
 
 	}
 	for (vector<Pair>::const_iterator p = pairs.begin(); p != pairs.end(); ++p)
 	{
-		cout << p->name << ":" << p->vel << "\n";
+	cout << p->name << ":" << p->vel << "\n";
 	}
+	// initialize the variables
+	char D = 'D';
+	char* pch = &D;
+	int arr[10] = {};
+
+	string* pstr = new string[10];
+	char** ppch = &pch;
+	const int ci = 1;
+	const int* pci = &ci;
+	const int* const cpci = pci;
 
 }
