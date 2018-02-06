@@ -118,31 +118,31 @@ Token_value get_token()
 	{
 	case 0:
 		return curr_tok = END;
-		break;
+		
 	case ';':
 		return curr_tok = Token_value(ch);
-		break;
+		
 	case '*':
 		return curr_tok = Token_value(ch);
-		break;
+		
 	case '/':
 		return curr_tok = Token_value(ch);
-		break;
+		
 	case '+':
 		return curr_tok = Token_value(ch);
-		break;
+		
 	case '-':
 		return curr_tok = Token_value(ch);
-		break;
+		
 	case '(':
 		return curr_tok = Token_value(ch);
-		break;
+		
 	case ')':
 		return curr_tok = Token_value(ch);
-		break;
+		
 	case '=':
 		return curr_tok = Token_value(ch);
-		break;
+		
 	case '0':
 		cin.putback(ch);
 		cin >> nuber_value;
