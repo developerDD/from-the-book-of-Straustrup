@@ -178,7 +178,7 @@
 		string f = { "ab" };
 		cout<<counT(str, a)<<endl;
 		cout << counT(str, f) << endl;
-		
+		// Exercis_6.6
 		
 	}
 
