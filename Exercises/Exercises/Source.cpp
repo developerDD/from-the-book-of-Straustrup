@@ -1,6 +1,7 @@
 	#include <iostream>
 	#include<vector>
 	#include<string>
+#include<algorithm>
 	//поиск слов которые повторяются и вывод слова и количества (с помощью создания структуры)
 
 	using namespace std;
@@ -34,7 +35,7 @@
 		t = *a;
 		*a = *b;
 		*b = t;*/
-		//whit out t
+		//without t
 		*a = *a + *b;
 		*b = *a - *b;
 		*a = *a - *b;
@@ -45,15 +46,43 @@
 		b = a - b;
 		a = a - b;
 	}
-	void prints(string* arrstr)
+	void prints(const vector<string> arrstr)
 	{
-		
-			for (int i = 0; i < 3; i++)
+			for (size_t i = 0; i < arrstr.size(); i++)
 			{
-				cout << *(arrstr + i) << "/" << arrstr[i] << endl;
+				cout <<arrstr[i] << endl;
 			}
 		
 	}
+	// find sum char in line
+	int counT(const string& s, char c)
+	{
+		int g = 0;
+		string::const_iterator i = find(s.begin(), s.end(), c);
+		while (i != s.end())
+		{
+			++g;
+			i = find(i + 1, s.end(), c);
+		}
+		return g;
+	}
+	// find sum several char in line
+	int counT(const string& s, const string& c)
+	{
+		int counter = 0;
+		for (size_t i = 0; i < s.length(); i++)
+		{
+			if (s.at(i) == c.at(0))
+			{
+				if (s.at(i + 1) == c.at(1))
+				{
+					counter++;
+				}
+			}
+		}
+		return counter;
+	}
+
 	void main()
 	{
 
@@ -69,6 +98,7 @@
 		cout << p->name << ":" << p->vel << "\n";
 		}*/
 		// initialize the variables
+		
 		//char D = 'D';
 		//char* pch = &D;
 		//int arr[10] = {};
@@ -108,11 +138,47 @@
 		//{
 		//	cout << *(str + i) << "\\"<<str[i]<<"\n";
 		//}
-		//transfer array in function
-		string arrstr[] = { "a", "s", "c" };
-		
-		prints(arrstr);
+		//transfer array in function, Instead of the usual array, it is better to use a vector
+		//vector <string> str = { "a", "s", "c" };
+		//prints(str);
 
+		//Reading words from a stream without repeating and sorting
+		//string st; 
+		//vector<string> vec;
+		//while (cin >> st&&st != "Quit")
+		//{
+		//	int f = 0;
+		//	for each (string var in vec)
+		//	{
+		//		if (st==var)
+		//		{
+		//			f++;
+		//			
+		//		}
+		//	}
+		//	if (f==0)
+		//	{
+		//		vec.push_back(st);
+		//	}
+		//	
+		//}
+		////show vector
+		//for each (string var in vec)
+		//{
+		//	cout << var << endl;
+		//}
+		//sort(vec.begin(), vec.end());
+		//for each (string var in vec)
+		//{
+		//	cout << var << endl;
+		//}
+			//Count the number of repeats of a pair of letters
+		string str = { "abasasbabdabeew" };
+		char a = 'a';
+		string f = { "ab" };
+		cout<<counT(str, a)<<endl;
+		cout << counT(str, f) << endl;
+		
 		
 	}
 
