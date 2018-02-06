@@ -71,26 +71,34 @@ double prim(bool get)
 	switch (curr_tok)
 	{
 	case NUMBER:
-		double v = nuber_value;
-		get_token();
-		return v;
+	{
+	  double v = nuber_value;
+	  get_token();
+	  return v;
+	}
+
 	case NAME:
-		double& v = table[string_value];
-		if (get_token()==ASSIGN)
-		{
-			v = expr(true);
-		}
-		return v;
+	{
+	  double& v = table[string_value];
+	  if (get_token() == ASSIGN)
+	  {
+			 v = expr(true);
+	 }
+	 return v;
+	}
 	case MINUS:
 		return -prim(true);
 	case LP:
-		double e = expr(true);
-		if (curr_tok!=RP)
-		{
-			return error("')' excepted");
-		}
-		get_token(); //skip ')'
-		return e;
+	{
+	   double e = expr(true);
+	   if (curr_tok != RP)
+	   {
+		   return error("')' excepted");
+	   }
+	   get_token(); //skip ')'
+	   return e;
+	}
+
 	default:
 		return error("primary excepted");
 	}
@@ -179,7 +187,7 @@ Token_value get_token()
 		if (isalpha(ch))
 		{
 			string_value = ch;
-			while (cin.get(ch)&&isalnum(ch))
+			while (cin.get(ch) && isalnum(ch))
 			{
 				string_value.push_back(ch);
 			}
@@ -200,7 +208,7 @@ void main()
 		get_token();
 		if (curr_tok == END) break;
 		if (curr_tok == PRINT) continue;
-		cout<< expr(false) << ' \n ';
+		cout << expr(false) << ' \n ';
 	}
-	
+
 }
