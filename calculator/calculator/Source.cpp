@@ -10,7 +10,7 @@ enum Token_value
 Token_value curr_tok = PRINT;
 //addition/subtraction
 double term(bool);
-double prim(bool);
+
 Token_value get_token();
 double error(const string&);
 double expr(bool get)
@@ -31,7 +31,7 @@ double expr(bool get)
 		}
 	}
 }
-
+double prim(bool);
 //division/multiplication
 
 double term(bool get)
@@ -208,7 +208,8 @@ void main()
 		get_token();
 		if (curr_tok == END) break;
 		if (curr_tok == PRINT) continue;
-		cout << expr(false) << ' \n ';
+		double s = expr(false);
+		cout << s << endl;
 	}
 
 }
